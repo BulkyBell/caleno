@@ -3,6 +3,8 @@ package com.caleno;
 import java.sql.Date;
 
 public class employee {
+    //TODO: cribar atributos?
+
     private Integer employeeId;
     private String firstName;
     private String lastName;

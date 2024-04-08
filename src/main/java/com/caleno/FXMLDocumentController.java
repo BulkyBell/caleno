@@ -41,19 +41,17 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button close;
 
+    private double x = 0;
+    private double y = 0;
+
     // CONEXIÓN A LA BASE
     private Connection connect;
     private PreparedStatement prepare;
     private ResultSet result;
 
-    private double x = 0;
-    private double y = 0;
     public void loginAdmin(){
-
         String sql = "SELECT * FROM admin WHERE username = ? and password = ?";
-
         connect = database.connectDb();
-
         try{
             prepare = connect.prepareStatement(sql);
             prepare.setString(1, username.getText());
@@ -62,6 +60,7 @@ public class FXMLDocumentController implements Initializable {
             result = prepare.executeQuery();
             Alert alert;
 
+            //Si algún campo no está rellenado estos lanzan un mensaje pop up de error
             if(username.getText().isEmpty() || password.getText().isEmpty()){
                 alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error Message");
@@ -70,6 +69,7 @@ public class FXMLDocumentController implements Initializable {
                 alert.showAndWait();
             }else{
                 if(result.next()){
+                    //Si encuentra el usuario en la abse loggea
                     getData.username = username.getText();
 
                     alert = new Alert(AlertType.INFORMATION);
@@ -96,7 +96,7 @@ public class FXMLDocumentController implements Initializable {
                     stage.initStyle(StageStyle.TRANSPARENT);
                     stage.setScene(scene);
                     stage.show();
-
+                //Sí no, lanza un mensaje de error
                 }else{
                     alert = new Alert(AlertType.ERROR);
                     alert.setTitle("Error Message");
@@ -110,13 +110,13 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    //TODO: No cierra la aplicación al pulsar el botón
     public void close(){
         System.exit(0);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        //TODO: mas cosos
     }
-
 }
