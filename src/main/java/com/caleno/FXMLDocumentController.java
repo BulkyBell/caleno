@@ -1,5 +1,6 @@
 package com.caleno;
 
+import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import java.net.URL;
@@ -110,13 +111,20 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    //TODO: No cierra la aplicación al pulsar el botón
-    public void close(){
-        System.exit(0);
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //TODO: mas cosos
+        // Agregamos un EventHandler al botón "close"
+        close.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                close();
+            }
+        });
+    }
+
+    // Método close() para cerrar la aplicación
+    public void close(){
+        Stage stage = (Stage) close.getScene().getWindow(); // Obtenemos la referencia de la ventana actual
+        stage.close(); // Cerramos la ventana
     }
 }
