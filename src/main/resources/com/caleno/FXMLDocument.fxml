@@ -25,12 +25,12 @@
             </AnchorPane>
             <AnchorPane layoutX="300.0" prefHeight="400.0" prefWidth="300.0" styleClass="right-form" stylesheets="@css/loginDesign.css">
                <children>
-                  <Label layoutX="108.0" layoutY="50.0" stylesheets="@css/loginDesign.css" text="Welcome" textFill="#256b51">
+                  <Label layoutX="108.0" layoutY="50.0" stylesheets="@css/loginDesign.css" text="Welcome" textFill="#b99650">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="59.0" layoutY="80.0" stylesheets="@css/loginDesign.css" text="To Caleno Manager" textFill="#256b51">
+                  <Label layoutX="59.0" layoutY="80.0" stylesheets="@css/loginDesign.css" text="To Caleno Manager" textFill="#b99650">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
