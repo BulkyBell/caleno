@@ -16,6 +16,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -888,6 +889,20 @@ public class dashboardController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        close.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                close();
+            }
+        });
+        minimize.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                minimize();
+            }
+        });
+
         displayUsername();
         defaultNav();
 

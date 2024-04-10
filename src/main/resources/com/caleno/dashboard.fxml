@@ -17,9 +17,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.caleno.dashboardController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
          <children>
             <BorderPane layoutX="146.0" layoutY="-13.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <top>
@@ -33,12 +33,12 @@
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="close" layoutX="1031.0" layoutY="7.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="55.0" styleClass="close" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+                              <Button fx:id="close" layoutX="1031.0" layoutY="7.0" mnemonicParsing="false" onAction="#close" prefHeight="30.0" prefWidth="55.0" styleClass="close" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="CLOSE" />
                                  </graphic>
                               </Button>
-                              <Button fx:id="minimize" layoutX="975.0" layoutY="2.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="55.0" styleClass="close">
+                              <Button fx:id="minimize" layoutX="975.0" layoutY="2.0" mnemonicParsing="false" onAction="#minimize" prefHeight="30.0" prefWidth="55.0" styleClass="close">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="MINUS" styleClass="minimize" />
                                  </graphic>
@@ -51,7 +51,7 @@
                <left>
                   <AnchorPane prefHeight="555.0" prefWidth="211.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane layoutX="6.0" layoutY="128.0" prefHeight="555.0" prefWidth="211.0" styleClass="nav-form" stylesheets="@css/dashboard.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane prefHeight="555.0" prefWidth="211.0" styleClass="nav-form" stylesheets="@css/dashboard.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <FontAwesomeIconView glyphName="USER" layoutX="76.0" layoutY="115.0" size="7em" />
                               <Label layoutX="71.0" layoutY="139.0" text="Welcome">
@@ -65,24 +65,24 @@
                                  </font>
                               </Label>
                               <Line endX="100.0" layoutX="106.0" layoutY="212.0" startX="-100.0" />
-                              <Button fx:id="home_btn" layoutX="16.0" layoutY="225.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Home">
+                              <Button fx:id="home_btn" layoutX="16.0" layoutY="225.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Home">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="HOME" size="1.5em" />
                                  </graphic>
                               </Button>
-                              <Button fx:id="addEmployee_btn" layoutX="16.0" layoutY="278.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="New Employee">
+                              <Button fx:id="addEmployee_btn" layoutX="16.0" layoutY="278.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="New Employee">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="PLUS" size="1.5em" />
                                  </graphic>
                               </Button>
-                              <Button fx:id="salary_btn" layoutX="16.0" layoutY="335.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Salary">
+                              <Button fx:id="salary_btn" layoutX="16.0" layoutY="335.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Salary">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="MONEY" size="1.5em" />
                                  </graphic>
                               </Button>
-                              <Button layoutX="6.0" layoutY="509.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="51.0" styleClass="logout" textFill="#e1bcbf">
+                              <Button fx:id="logout" layoutX="6.0" layoutY="509.0" mnemonicParsing="false" onAction="#logout" prefHeight="39.0" prefWidth="51.0" styleClass="logout" textFill="#e1bcbf">
                                  <graphic>
-                                    <FontAwesomeIconView fx:id="logout" glyphName="SIGN_OUT" size="2em" />
+                                    <FontAwesomeIconView glyphName="SIGN_OUT" size="2em" />
                                  </graphic>
                               </Button>
                               <Label layoutX="65.0" layoutY="516.0" text="Logout">
