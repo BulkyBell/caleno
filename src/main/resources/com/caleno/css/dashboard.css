@@ -70,9 +70,9 @@
     -fx-alignment:CENTER;
 }
 .table-view .column-header-background{
-    -fx-background-color:linear-gradient(to bottom right, #272b3f, #256b51);
+    -fx-background-color:linear-gradient(to bottom right, #ff8b94, #fec7c0, #ffd3b6);
     -fx-background-insets: 0 0 0 0;
-    -f-background-radius:8px 8px 0px 0px;
+    -fx-background-radius:8px 8px 0px 0px;
 }
 .table-view .column-header, .filter{
     -fx-background-color: transparent;
@@ -115,51 +115,39 @@
 }
 
 .add-btn{
-    -fx-background-color:#304575;
+    -fx-background-color:#ffcc99;
     -fx-background-radius:8px;
     -fx-text-fill:#fff;
     -fx-font-size:14px;
     -fx-font-family:"Arial";
     -fx-cursor:hand;
-}
-.add-btn:hover{
-    -fx-background-color:#3357a4;
 }
 
 .update-btn{
-    -fx-background-color:#327252;
+    -fx-background-color:#ffb3b3;
     -fx-background-radius:8px;
     -fx-text-fill:#fff;
     -fx-font-size:14px;
     -fx-font-family:"Arial";
     -fx-cursor:hand;
-}
-.update-btn:hover{
-    -fx-background-color:#309a65;
 }
 
 .delete-btn{
-    -fx-background-color:#86253f;
+    -fx-background-color:#ff6666;
     -fx-background-radius:8px;
     -fx-text-fill:#fff;
     -fx-font-size:14px;
     -fx-font-family:"Arial";
     -fx-cursor:hand;
-}
-.delete-btn:hover{
-    -fx-background-color:#ae1d46;
 }
 
 .clear-btn{
-    -fx-background-color:#753566;
+    -fx-background-color:#ff9933;
     -fx-background-radius:8px;
     -fx-text-fill:#fff;
     -fx-font-size:14px;
     -fx-font-family:"Arial";
     -fx-cursor:hand;
-}
-.clear-btn:hover{
-    -fx-background-color:#9d3485;
 }
 
 .label-info{

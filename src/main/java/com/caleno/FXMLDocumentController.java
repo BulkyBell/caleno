@@ -113,7 +113,6 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Agregamos un EventHandler al botón "close"
         close.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -122,9 +121,8 @@ public class FXMLDocumentController implements Initializable {
         });
     }
 
-    // Método close() para cerrar la aplicación
     public void close(){
-        Stage stage = (Stage) close.getScene().getWindow(); // Obtenemos la referencia de la ventana actual
-        stage.close(); // Cerramos la ventana
+        Stage stage = (Stage) close.getScene().getWindow();
+        stage.close();
     }
 }
