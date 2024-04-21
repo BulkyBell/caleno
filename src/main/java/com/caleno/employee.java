@@ -3,41 +3,35 @@ package com.caleno;
 import java.sql.Date;
 
 public class employee {
-    //TODO: cribar atributos?
-
     private Integer employeeId;
     private String firstName;
     private String lastName;
     private String gender;
-    private String location;
-    private String phoneNumber;
+    private String phoneNum;
     private String position;
     private String profileImage;
-    private Date dateOfBirth;
+    private Date date;
     private Double salary;
 
     public employee() {
     }
 
-    public employee(Integer employeeId, String firstName, String lastName, String gender, String location, String phoneNumber,
-                    String position, String profileImage, Date dateOfBirth, Double salary) {
+    public employee(Integer employeeId, String firstName, String lastName, String gender,
+                    String phoneNum, String position, String profileImage, Date date){
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
-        this.location = location;
-        this.phoneNumber = phoneNumber;
+        this.phoneNum = phoneNum;
         this.position = position;
         this.profileImage = profileImage;
-        this.dateOfBirth = dateOfBirth;
-        this.salary = salary;
+        this.date = date;
     }
 
-    public employee(Integer employeeId, String firstName, String lastName, String location, String position, Double salary) {
+    public employee(Integer employeeId, String firstName, String lastName,String position, Double salary){
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.location = location;
         this.position = position;
         this.salary = salary;
     }
@@ -54,11 +48,8 @@ public class employee {
     public String getGender() {
         return gender;
     }
-    public String getLocation() {
-        return location;
-    }
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhoneNum() {
+        return phoneNum;
     }
     public String getPosition() {
         return position;
@@ -69,7 +60,7 @@ public class employee {
     public Double getSalary() {
         return salary;
     }
-    public Date getDateOfBirth() {
-        return dateOfBirth;
+    public Date getDate() {
+        return date;
     }
 }

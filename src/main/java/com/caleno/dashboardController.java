@@ -201,7 +201,7 @@ public class dashboardController implements Initializable {
 
     public void homeTotalEmployees() {
 
-        String sql = "SELECT COUNT(id) FROM employee";
+        String sql = "SELECT COUNT(id) FROM employeedata";
 
         connect = database.connectDb();
         int countData = 0;
@@ -240,7 +240,6 @@ public class dashboardController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public void homeTotalInactive() {
@@ -268,7 +267,7 @@ public class dashboardController implements Initializable {
 
         home_chart.getData().clear();
 
-        String sql = "SELECT date, COUNT(id) FROM employee GROUP BY date ORDER BY TIMESTAMP(date) ASC LIMIT 7";
+        String sql = "SELECT date, COUNT(id) FROM employeedata GROUP BY date ORDER BY TIMESTAMP(date) ASC LIMIT 7";
 
         connect = database.connectDb();
 
@@ -295,7 +294,7 @@ public class dashboardController implements Initializable {
         Date date = new Date();
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 
-        String sql = "INSERT INTO employee "
+        String sql = "INSERT INTO employeedata "
                 + "(employee_id,firstName,lastName,gender,phoneNum,position,image,date) "
                 + "VALUES(?,?,?,?,?,?,?,?)";
 
@@ -317,7 +316,7 @@ public class dashboardController implements Initializable {
                 alert.showAndWait();
             } else {
 
-                String check = "SELECT employee_id FROM employee WHERE employee_id = '"
+                String check = "SELECT employee_id FROM employeedata WHERE employee_id = '"
                         + addEmployee_employeeID.getText() + "'";
 
                 statement = connect.createStatement();
@@ -327,7 +326,7 @@ public class dashboardController implements Initializable {
                     alert = new Alert(AlertType.ERROR);
                     alert.setTitle("Error Message");
                     alert.setHeaderText(null);
-                    alert.setContentText("Employee ID: " + addEmployee_employeeID.getText() + " was already exist!");
+                    alert.setContentText("Employee ID: " + addEmployee_employeeID.getText() + " already exist!");
                     alert.showAndWait();
                 } else {
 
@@ -384,7 +383,7 @@ public class dashboardController implements Initializable {
         Date date = new Date();
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 
-        String sql = "UPDATE employee SET firstName = '"
+        String sql = "UPDATE employeedata SET firstName = '"
                 + addEmployee_firstName.getText() + "', lastName = '"
                 + addEmployee_lastName.getText() + "', gender = '"
                 + addEmployee_gender.getSelectionModel().getSelectedItem() + "', phoneNum = '"
@@ -462,7 +461,7 @@ public class dashboardController implements Initializable {
 
     public void addEmployeeDelete() {
 
-        String sql = "DELETE FROM employee WHERE employee_id = '"
+        String sql = "DELETE FROM employeedata WHERE employee_id = '"
                 + addEmployee_employeeID.getText() + "'";
 
         connect = database.connectDb();
@@ -535,7 +534,7 @@ public class dashboardController implements Initializable {
         if (file != null) {
             getData.path = file.getAbsolutePath();
 
-            image = new Image(file.toURI().toString(), 101, 127, false, true);
+            image = new Image(file.toURI().toString(), 123, 150, false, true);
             addEmployee_image.setImage(image);
         }
     }
@@ -588,11 +587,11 @@ public class dashboardController implements Initializable {
                     return true;
                 } else if (predicateEmployeeData.getGender().toLowerCase().contains(searchKey)) {
                     return true;
-                } else if (predicateEmployeeData.getPhoneNumber().toLowerCase().contains(searchKey)) {
+                } else if (predicateEmployeeData.getPhoneNum().toLowerCase().contains(searchKey)) {
                     return true;
                 } else if (predicateEmployeeData.getPosition().toLowerCase().contains(searchKey)) {
                     return true;
-                } else if (predicateEmployeeData.getDateOfBirth().toString().contains(searchKey)) {
+                } else if (predicateEmployeeData.getDate().toString().contains(searchKey)) {
                     return true;
                 } else {
                     return false;
@@ -609,7 +608,7 @@ public class dashboardController implements Initializable {
     public ObservableList<employee> addEmployeeListData() {
 
         ObservableList<employee> listData = FXCollections.observableArrayList();
-        String sql = "SELECT * FROM employee";
+        String sql = "SELECT * FROM employeedata";
 
         connect = database.connectDb();
 
@@ -619,16 +618,15 @@ public class dashboardController implements Initializable {
             employee employeeD;
 
             while (result.next()) {
-                /*employeeD = new employeeData(result.getInt("employee_id"),
+                employeeD = new employee(result.getInt("employee_id"),
                         result.getString("firstName"),
                         result.getString("lastName"),
                         result.getString("gender"),
-                        result.getString("phoneNum"),
+                        result.getString("phoneNumb"),
                         result.getString("position"),
                         result.getString("image"),
                         result.getDate("date"));
-                listData.add(employeeD);*/
-
+                listData.add(employeeD);
             }
 
         } catch (Exception e) {
@@ -639,7 +637,7 @@ public class dashboardController implements Initializable {
     private ObservableList<employee> addEmployeeList;
 
     public void addEmployeeShowListData() {
-        /*addEmployeeList = addEmployeeListData();
+        addEmployeeList = addEmployeeListData();
 
         addEmployee_col_employeeID.setCellValueFactory(new PropertyValueFactory<>("employeeId"));
         addEmployee_col_firstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -649,7 +647,7 @@ public class dashboardController implements Initializable {
         addEmployee_col_position.setCellValueFactory(new PropertyValueFactory<>("position"));
         addEmployee_col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        addEmployee_tableView.setItems(addEmployeeList);*/
+        addEmployee_tableView.setItems(addEmployeeList);
 
     }
 
@@ -662,15 +660,15 @@ public class dashboardController implements Initializable {
         }
 
         addEmployee_employeeID.setText(String.valueOf(employeeD.getEmployeeId()));
-        addEmployee_firstName.setText(employeeD.getFirstName());
+           addEmployee_firstName.setText(employeeD.getFirstName());
         addEmployee_lastName.setText(employeeD.getLastName());
-        addEmployee_phoneNum.setText(employeeD.getPhoneNumber());
+        addEmployee_phoneNum.setText(employeeD.getPhoneNum());
 
         getData.path = employeeD.getProfileImage();
 
         String uri = "file:" + employeeD.getProfileImage();
 
-        image = new Image(uri, 101, 127, false, true);
+        image = new Image(uri, 123, 150, false, true);
         addEmployee_image.setImage(image);
     }
 
@@ -734,13 +732,13 @@ public class dashboardController implements Initializable {
             employee employeeD;
 
             while (result.next()) {
-                /*employeeD = new employeeData(result.getInt("employee_id"),
+                employeeD = new employee(result.getInt("employee_id"),
                         result.getString("firstName"),
                         result.getString("lastName"),
                         result.getString("position"),
                         result.getDouble("salary"));
 
-                listData.add(employeeD);*/
+                listData.add(employeeD);
             }
 
         } catch (Exception e) {

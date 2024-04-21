@@ -136,7 +136,7 @@
                                                 <Font name="System Bold" size="15.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="home_totalActive" alignment="CENTER" layoutX="108.0" layoutY="55.0" prefHeight="30.0" prefWidth="124.0" text="0">
+                                          <Label fx:id="home_totalPresents" alignment="CENTER" layoutX="108.0" layoutY="55.0" prefHeight="30.0" prefWidth="124.0" text="0">
                                              <font>
                                                 <Font name="System Bold" size="20.0" />
                                              </font>
@@ -175,10 +175,10 @@
                                                 <TableColumn fx:id="addEmployee_col_gender" prefWidth="62.0" text="GENDER" />
                                                 <TableColumn fx:id="addEmployee_col_phoneNum" prefWidth="139.0" text="PHONE #" />
                                                 <TableColumn fx:id="addEmployee_col_position" prefWidth="111.0" text="POSITION" />
-                                                <TableColumn fx:id="addEmployee_col_locality" prefWidth="119.0" text="LOCALITY" />
+                                                <TableColumn fx:id="addEmployee_col_date" prefWidth="119.0" text="Date" />
                                             </columns>
                                           </TableView>
-                                          <TextField fx:id="addEmployee_search" layoutX="31.0" layoutY="8.0" prefHeight="30.0" prefWidth="277.0" promptText="Search" styleClass="search" stylesheets="@css/dashboard.css" />
+                                          <TextField fx:id="addEmployee_search" layoutX="31.0" layoutY="8.0" onAction="#addEmployeeSearch" prefHeight="30.0" prefWidth="277.0" promptText="Search" styleClass="search" stylesheets="@css/dashboard.css" />
                                           <FontAwesomeIconView glyphName="SEARCH" layoutX="281.0" layoutY="29.0" size="1.5em" />
                                        </children>
                                     </AnchorPane>
@@ -205,7 +205,7 @@
                                           <Font name="System Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox fx:id="addEmployee_gender" layoutX="129.0" layoutY="430.0" prefHeight="25.0" prefWidth="84.0" promptText="Choose" styleClass="textfield" stylesheets="@css/dashboard.css" />
+                                    <ComboBox fx:id="addEmployee_gender" layoutX="129.0" layoutY="430.0" onAction="#addEmployeeGendernList" prefHeight="25.0" prefWidth="84.0" promptText="Choose" styleClass="textfield" stylesheets="@css/dashboard.css" />
                                     <Label layoutX="366.0" layoutY="329.0" prefHeight="21.0" prefWidth="130.0" text="Phone Number:">
                                        <font>
                                           <Font name="System Bold" size="15.0" />
@@ -217,16 +217,16 @@
                                           <Font name="System Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox fx:id="addEmployee_position" layoutX="498.0" layoutY="362.0" prefHeight="25.0" prefWidth="108.0" promptText="Choose" styleClass="textfield" stylesheets="@css/dashboard.css" />
+                                    <ComboBox fx:id="addEmployee_position" layoutX="498.0" layoutY="362.0" onAction="#addEmployeePositionList" prefHeight="25.0" prefWidth="108.0" promptText="Choose" styleClass="textfield" stylesheets="@css/dashboard.css" />
                                     <AnchorPane layoutX="708.0" layoutY="306.0" prefHeight="138.0" prefWidth="124.0" styleClass="white-bg" stylesheets="@css/dashboard.css">
                                        <children>
-                                          <ImageView fx:id="addEmployee_image" fitHeight="150.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fx:id="addEmployee_image" fitHeight="150.0" fitWidth="123.0" onMouseClicked="#addEmployeeInsertImage" pickOnBounds="true" preserveRatio="true" />
                                        </children>
                                     </AnchorPane>
-                                    <Button fx:id="addBtn" layoutX="539.0" layoutY="459.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="70.0" styleClass="add-btn" stylesheets="@css/dashboard.css" text="ADD" />
-                                    <Button fx:id="updateBtn" layoutX="350.0" layoutY="462.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="70.0" styleClass="update-btn" stylesheets="@css/dashboard.css" text="Clear" />
-                                    <Button fx:id="clearBtn" layoutX="445.0" layoutY="462.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="70.0" styleClass="clear-btn" stylesheets="@css/dashboard.css" text="Update" />
-                                    <Button fx:id="deleteBtn" layoutX="257.0" layoutY="462.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="70.0" styleClass="delete-btn" stylesheets="@css/dashboard.css" text="Delete" />
+                                    <Button fx:id="addBtn" layoutX="539.0" layoutY="459.0" mnemonicParsing="false" onAction="#addEmployeeAdd" prefHeight="54.0" prefWidth="70.0" styleClass="add-btn" stylesheets="@css/dashboard.css" text="ADD" />
+                                    <Button fx:id="updateBtn" layoutX="350.0" layoutY="462.0" mnemonicParsing="false" onAction="#addEmployeeReset" prefHeight="54.0" prefWidth="70.0" styleClass="update-btn" stylesheets="@css/dashboard.css" text="Clear" />
+                                    <Button fx:id="clearBtn" layoutX="445.0" layoutY="462.0" mnemonicParsing="false" onAction="#addEmployeeUpdate" prefHeight="54.0" prefWidth="70.0" styleClass="clear-btn" stylesheets="@css/dashboard.css" text="Update" />
+                                    <Button fx:id="deleteBtn" layoutX="257.0" layoutY="462.0" mnemonicParsing="false" onAction="#addEmployeeDelete" prefHeight="54.0" prefWidth="70.0" styleClass="delete-btn" stylesheets="@css/dashboard.css" text="Delete" />
                                     <Button fx:id="addEmployee_importBtn" layoutX="708.0" layoutY="462.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" styleClass="import-btn" stylesheets="@css/dashboard.css" text="Select" />
                                  </children>
                               </AnchorPane>
@@ -243,8 +243,8 @@
                                     <Label layoutX="12.0" layoutY="147.0" text="Position:" />
                                     <Label layoutX="11.0" layoutY="189.0" text="Salary:" />
                                     <TextField fx:id="salary_salary" layoutX="89.0" layoutY="185.0" prefHeight="25.0" prefWidth="119.0" styleClass="textfield" stylesheets="@css/dashboard.css" />
-                                    <Button fx:id="salary_ipdateBtn" layoutX="115.0" layoutY="231.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="95.0" styleClass="update-btn" stylesheets="@css/dashboard.css" text="Update" />
-                                    <Button fx:id="salary_clearBtn" layoutX="9.0" layoutY="231.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="95.0" styleClass="clear-btn" stylesheets="@css/dashboard.css" text="Clear" />
+                                    <Button fx:id="salary_updateBtn" layoutX="115.0" layoutY="231.0" mnemonicParsing="false" onMouseClicked="#salaryUpdate" prefHeight="46.0" prefWidth="95.0" styleClass="update-btn" stylesheets="@css/dashboard.css" text="Update" />
+                                    <Button fx:id="salary_clearBtn" layoutX="11.0" layoutY="231.0" mnemonicParsing="false" onMouseClicked="#salaryReset" prefHeight="45.0" prefWidth="95.0" styleClass="clear-btn" stylesheets="@css/dashboard.css" text="Clear" />
                                     <Label fx:id="salary_firstName" layoutX="89.0" layoutY="63.0" prefHeight="20.0" prefWidth="116.0" styleClass="label-info" stylesheets="@css/dashboard.css" />
                                     <Label fx:id="salary_lastName" layoutX="89.0" layoutY="105.0" prefHeight="19.0" prefWidth="116.0" styleClass="label-info" stylesheets="@css/dashboard.css" />
                                     <Label fx:id="salary_position" layoutX="90.0" layoutY="147.0" prefWidth="116.0" styleClass="label-info" stylesheets="@css/dashboard.css" />
@@ -252,13 +252,13 @@
                               </AnchorPane>
                               <AnchorPane layoutX="246.0" layoutY="14.0" prefHeight="528.0" prefWidth="630.0" styleClass="white-bg" stylesheets="@css/dashboard.css">
                                  <children>
-                                    <TableView fx:id="salary_tableView" layoutX="14.0" layoutY="10.0" prefHeight="509.0" prefWidth="603.0">
+                                    <TableView fx:id="salary_tableView" layoutX="14.0" layoutY="10.0" onMouseClicked="#salarySelect" prefHeight="509.0" prefWidth="603.0">
                                       <columns>
                                         <TableColumn fx:id="salary_col_employeeID" prefWidth="57.0" text="ID" />
-                                        <TableColumn fx:id="saalary_col_firstName" prefWidth="106.0" text="First Name" />
-                                          <TableColumn fx:id="saalary_col_lastName" prefWidth="150.0" text="Last Name" />
-                                          <TableColumn fx:id="saalary_col_position" prefWidth="137.0" text="Position" />
-                                          <TableColumn fx:id="saalary_col_salary" prefWidth="152.0" text="Salary" />
+                                        <TableColumn fx:id="salary_col_firstName" prefWidth="106.0" text="First Name" />
+                                          <TableColumn fx:id="salary_col_lastName" prefWidth="150.0" text="Last Name" />
+                                          <TableColumn fx:id="salary_col_position" prefWidth="137.0" text="Position" />
+                                          <TableColumn fx:id="salary_col_salary" prefWidth="152.0" text="Salary" />
                                       </columns>
                                     </TableView>
                                  </children>
