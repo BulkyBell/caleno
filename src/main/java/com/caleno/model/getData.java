@@ -1,4 +1,4 @@
-package com.caleno;
+package com.caleno.model;
 
 public class getData {
     public static String username;

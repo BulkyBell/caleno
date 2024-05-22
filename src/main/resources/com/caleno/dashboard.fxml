@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.caleno.dashboardController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.caleno.controllers.dashboardController">
    <children>
       <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -146,7 +146,7 @@
                                     <AnchorPane layoutX="580.0" layoutY="14.0" prefHeight="115.0" prefWidth="265.0" styleClass="card" stylesheets="@css/dashboard.css">
                                        <children>
                                           <FontAwesomeIconView glyphName="MINUS" layoutX="33.0" layoutY="72.0" size="4em" wrappingWidth="54.85714244842529" />
-                                          <Label layoutX="120.0" layoutY="31.0" text="Total Inactive:">
+                                          <Label fx:id="home_totalInactiveEm" layoutX="120.0" layoutY="31.0" text="Total Inactive:">
                                              <font>
                                                 <Font name="System Bold" size="15.0" />
                                              </font>
@@ -167,9 +167,9 @@
                                  <children>
                                     <AnchorPane prefHeight="284.0" prefWidth="865.0" styleClass="white-bg" stylesheets="@css/dashboard.css">
                                        <children>
-                                          <TableView fx:id="addEmployee_tableView" layoutX="31.0" layoutY="44.0" prefHeight="214.0" prefWidth="804.0" stylesheets="@css/dashboard.css">
+                                          <TableView fx:id="addEmployee_tableView" layoutX="31.0" layoutY="44.0" onMouseClicked="#employeeSelect" prefHeight="214.0" prefWidth="804.0" stylesheets="@css/dashboard.css">
                                             <columns>
-                                              <TableColumn fx:id="addEmployee_col_employeeID" prefWidth="65.0" text="ID" />
+                                              <TableColumn fx:id="addEmployee_col_employee_ID" prefWidth="65.0" text="ID" />
                                                 <TableColumn fx:id="addEmployee_col_firstName" prefWidth="126.0" text="FIRST NAME" />
                                                 <TableColumn fx:id="addEmployee_col_lastName" prefWidth="181.0" text="LAST NAME" />
                                                 <TableColumn fx:id="addEmployee_col_gender" prefWidth="62.0" text="GENDER" />
@@ -187,7 +187,7 @@
                                           <Font name="System Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="addEmployee_employeeID" layoutX="128.0" layoutY="327.0" prefHeight="25.0" prefWidth="60.0" styleClass="textfield" stylesheets="@css/dashboard.css" />
+                                    <TextField fx:id="addEmployee_employee_ID" layoutX="128.0" layoutY="327.0" prefHeight="25.0" prefWidth="60.0" styleClass="textfield" stylesheets="@css/dashboard.css" />
                                     <Label layoutX="26.0" layoutY="364.0" text="First Name:">
                                        <font>
                                           <Font name="System Bold" size="15.0" />
@@ -237,7 +237,7 @@
                               <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="528.0" prefWidth="215.0" styleClass="white-bg" stylesheets="@css/dashboard.css">
                                  <children>
                                     <Label layoutX="11.0" layoutY="27.0" text="Employee ID:" />
-                                    <TextField fx:id="salary_employeeID" layoutX="89.0" layoutY="23.0" prefHeight="25.0" prefWidth="119.0" styleClass="textfield" stylesheets="@css/dashboard.css" />
+                                    <TextField fx:id="salary_employee_ID" layoutX="89.0" layoutY="23.0" prefHeight="25.0" prefWidth="119.0" styleClass="textfield" stylesheets="@css/dashboard.css" />
                                     <Label layoutX="11.0" layoutY="63.0" text="First Name:" />
                                     <Label layoutX="11.0" layoutY="105.0" text="Last Name:" />
                                     <Label layoutX="12.0" layoutY="147.0" text="Position:" />
@@ -254,7 +254,7 @@
                                  <children>
                                     <TableView fx:id="salary_tableView" layoutX="14.0" layoutY="10.0" onMouseClicked="#salarySelect" prefHeight="509.0" prefWidth="603.0">
                                       <columns>
-                                        <TableColumn fx:id="salary_col_employeeID" prefWidth="57.0" text="ID" />
+                                        <TableColumn fx:id="salary_col_employee_ID" prefWidth="57.0" text="ID" />
                                         <TableColumn fx:id="salary_col_firstName" prefWidth="106.0" text="First Name" />
                                           <TableColumn fx:id="salary_col_lastName" prefWidth="150.0" text="Last Name" />
                                           <TableColumn fx:id="salary_col_position" prefWidth="137.0" text="Position" />

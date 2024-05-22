@@ -3,7 +3,7 @@ package com.caleno;
 import java.sql.Date;
 
 public class employee {
-    private Integer employeeId;
+    private Integer employee_Id;
     private String firstName;
     private String lastName;
     private String gender;
@@ -16,9 +16,9 @@ public class employee {
     public employee() {
     }
 
-    public employee(Integer employeeId, String firstName, String lastName, String gender,
+    public employee(Integer employee_Id, String firstName, String lastName, String gender,
                     String phoneNum, String position, String profileImage, Date date){
-        this.employeeId = employeeId;
+        this.employee_Id = employee_Id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -28,17 +28,18 @@ public class employee {
         this.date = date;
     }
 
-    public employee(Integer employeeId, String firstName, String lastName,String position, Double salary){
-        this.employeeId = employeeId;
+    public employee(Integer employee_Id, String firstName, String lastName,String position, Double salary){
+        this.employee_Id = employee_Id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.position = position;
         this.salary = salary;
     }
 
-    public Integer getEmployeeId() {
-        return employeeId;
+    public Integer getEmployee_Id() {
+        return employee_Id;
     }
+
     public String getFirstName() {
         return firstName;
     }

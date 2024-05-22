@@ -1,5 +1,7 @@
-package com.caleno;
+package com.caleno.controllers;
 
+import com.caleno.model.database;
+import com.caleno.model.getData;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
@@ -11,17 +13,14 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 

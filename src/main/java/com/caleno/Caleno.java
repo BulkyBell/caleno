@@ -10,7 +10,6 @@ import javafx.stage.StageStyle;
 
 public class Caleno extends Application {
 
-    //TODO: TRADUCIR TODOS LOS COMENTARIOS AL COMPLETAR LA APLICACION
 
     private double x = 0;
     private double y = 0;
