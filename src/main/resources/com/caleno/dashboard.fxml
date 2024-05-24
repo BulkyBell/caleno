@@ -205,7 +205,7 @@
                                           <Font name="System Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox fx:id="addEmployee_gender" layoutX="129.0" layoutY="430.0" onAction="#addEmployeeGendernList" prefHeight="25.0" prefWidth="84.0" promptText="Choose" styleClass="textfield" stylesheets="@css/dashboard.css" />
+                                    <ComboBox fx:id="addEmployee_gender" layoutX="129.0" layoutY="430.0" onAction="#addEmployeeGenderList" prefHeight="25.0" prefWidth="142.0" promptText="Choose" styleClass="textfield" stylesheets="@css/dashboard.css" />
                                     <Label layoutX="366.0" layoutY="329.0" prefHeight="21.0" prefWidth="130.0" text="Phone Number:">
                                        <font>
                                           <Font name="System Bold" size="15.0" />
@@ -217,7 +217,7 @@
                                           <Font name="System Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox fx:id="addEmployee_position" layoutX="498.0" layoutY="362.0" onAction="#addEmployeePositionList" prefHeight="25.0" prefWidth="108.0" promptText="Choose" styleClass="textfield" stylesheets="@css/dashboard.css" />
+                                    <ComboBox fx:id="addEmployee_position" layoutX="498.0" layoutY="362.0" onAction="#addEmployeeGenderList" prefHeight="25.0" prefWidth="170.0" promptText="Choose" styleClass="textfield" stylesheets="@css/dashboard.css" />
                                     <AnchorPane layoutX="708.0" layoutY="306.0" prefHeight="138.0" prefWidth="124.0" styleClass="white-bg" stylesheets="@css/dashboard.css">
                                        <children>
                                           <ImageView fx:id="addEmployee_image" fitHeight="150.0" fitWidth="123.0" onMouseClicked="#addEmployeeInsertImage" pickOnBounds="true" preserveRatio="true" />
