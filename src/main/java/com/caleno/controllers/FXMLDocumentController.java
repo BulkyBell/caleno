@@ -24,27 +24,23 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * @Author BulkyBell / Sergio Colomer Rodríguez
+ */
 public class FXMLDocumentController implements Initializable {
-
     @FXML
     private AnchorPane main_form;
-
     @FXML
     private TextField username;
-
     @FXML
     private PasswordField password;
-
     @FXML
     private Button loginBtn;
-
     @FXML
     private Button close;
 
     private double x = 0;
     private double y = 0;
-
-    // CONEXIÓN A LA BASE
     private Connection connect;
     private PreparedStatement prepare;
     private ResultSet result;
@@ -56,12 +52,11 @@ public class FXMLDocumentController implements Initializable {
             prepare = connect.prepareStatement(sql);
             prepare.setString(1, username.getText());
             prepare.setString(2, password.getText());
-
             result = prepare.executeQuery();
-            Alert alert;
 
-            //Si algún campo no está rellenado estos lanzan un mensaje pop up de error
+            Alert alert;
             if(username.getText().isEmpty() || password.getText().isEmpty()){
+                // Displays an error message if any fields is empty
                 alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
@@ -69,15 +64,15 @@ public class FXMLDocumentController implements Initializable {
                 alert.showAndWait();
             }else{
                 if(result.next()){
-                    //Si encuentra el usuario en la abse loggea
+                    // If query returns a result, login is successful
                     getData.username = username.getText();
-
                     alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Information Message");
                     alert.setHeaderText(null);
                     alert.setContentText("Logged Successfully.");
                     alert.showAndWait();
 
+                    // Scene hides and moves onto the next screen
                     loginBtn.getScene().getWindow().hide();
                     Parent root = FXMLLoader.load(getClass().getResource("/com/caleno/dashboard.fxml"));
                     Stage stage = new Stage();
@@ -96,8 +91,8 @@ public class FXMLDocumentController implements Initializable {
                     stage.initStyle(StageStyle.TRANSPARENT);
                     stage.setScene(scene);
                     stage.show();
-                //Sí no, lanza un mensaje de error
                 }else{
+                    // Displays an error message if username or password is incorrect
                     alert = new Alert(AlertType.ERROR);
                     alert.setTitle("Error Message");
                     alert.setHeaderText(null);
@@ -105,9 +100,7 @@ public class FXMLDocumentController implements Initializable {
                     alert.showAndWait();
                 }
             }
-
         }catch(Exception e){e.printStackTrace();}
-
     }
 
     @Override
@@ -119,7 +112,6 @@ public class FXMLDocumentController implements Initializable {
             }
         });
     }
-
     public void close(){
         Stage stage = (Stage) close.getScene().getWindow();
         stage.close();

@@ -12,6 +12,7 @@ public class Employee {
     private String profileImage;
     private Date date;
     private Double salary;
+    private Boolean active;
 
     public Employee() {
     }
@@ -28,12 +29,13 @@ public class Employee {
         this.date = date;
     }
 
-    public Employee(Integer employee_Id, String firstName, String lastName,String position, Double salary){
+    public Employee(Integer employee_Id, String firstName, String lastName,String position, Double salary, Boolean active){
         this.employee_Id = employee_Id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.position = position;
         this.salary = salary;
+        this.active=active;
     }
 
     public Integer getEmployee_Id() {
@@ -63,5 +65,9 @@ public class Employee {
     }
     public Date getDate() {
         return date;
+    }
+
+    public Boolean getActive() {
+        return active;
     }
 }
