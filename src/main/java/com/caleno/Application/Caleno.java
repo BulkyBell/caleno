@@ -1,4 +1,4 @@
-package com.caleno;
+package com.caleno.Application;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -11,17 +11,12 @@
     -fx-border-width:.2px .4px .8px .4px;
 }
 
-.close{
+.topbar-btn{
     -fx-background-color:transparent;
     -fx-cursor:hand;
-}
-.close:hover{
-    -fx-background-color:#ff3547;
-}
-
-.minimize{
-    -fx-background-color:transparent;
-    -fx-cursor:hand;
+    -fx-border-width: 0.5;
+    -fx-border-style: solid;
+    -fx-border-radius: 10;
 }
 .minimize:hover{
     -fx-background-color:#ddd;
@@ -38,17 +33,15 @@
     -fx-font-size:14px;
     -fx-text-fill:#000000;
     -fx-alignment:CENTER-LEFT;
+    -fx-border-color: black;
+    -fx-border-width: 0.5;
+    -fx-border-style: solid;
+    -fx-border-radius: 10 10 0 0;
 }
 
-.logout{
-    -fx-background-color:#e1bcbf;
-    -fx-background-radius:10px;
-    -fx-cursor:hand;
+.nav-btn:hover{
+    -fx-background-color:#ff3547;
 }
-.logout:hover{
-    -fx-background-color:#ddaaaf;
-}
-
 .white-bg{
     -fx-background-color:#fff;
     -fx-background-radius:8px;
@@ -156,3 +149,4 @@
     -fx-border-radius:4px;
     -fx-padding:0px 0px 0px 8px;
 }
+

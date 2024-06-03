@@ -1,4 +1,4 @@
-package com.caleno;
+package com.caleno.model;
 
 import java.sql.Date;
 
@@ -41,7 +41,6 @@ public class Employee {
     public Integer getEmployee_Id() {
         return employee_Id;
     }
-
     public String getFirstName() {
         return firstName;
     }
@@ -66,7 +65,6 @@ public class Employee {
     public Date getDate() {
         return date;
     }
-
     public Boolean getActive() {
         return active;
     }
