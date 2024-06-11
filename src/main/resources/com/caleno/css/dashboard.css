@@ -116,6 +116,24 @@
     -fx-cursor:hand;
 }
 
+.learnmore-btn{
+    -fx-background-color: #ff6666;
+    -fx-background-radius:8px;
+    -fx-text-fill:#fff;
+    -fx-font-size:14px;
+    -fx-font-family:"Arial";
+    -fx-cursor:hand;
+}
+
+.submit-btn{
+    -fx-background-color: #ff6666;
+    -fx-background-radius:8px;
+    -fx-text-fill:#fff;
+    -fx-font-size:14px;
+    -fx-font-family:"Arial";
+    -fx-cursor:hand;
+}
+
 .update-btn{
     -fx-background-color: #FF570A;
     -fx-background-radius:8px;

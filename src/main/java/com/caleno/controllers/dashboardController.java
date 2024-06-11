@@ -61,6 +61,9 @@ public class dashboardController implements Initializable {
     private Button salary_btn;
 
     @FXML
+    private Button forum_btn;
+
+    @FXML
     private Button logout;
 
     @FXML
@@ -147,6 +150,30 @@ public class dashboardController implements Initializable {
     @FXML
     private AnchorPane salary_form;
 
+    @FXML
+    private AnchorPane forum_form;
+    @FXML
+    private ImageView postImage;
+    @FXML
+    private ImageView postPopularPost1;
+    @FXML
+    private ImageView getPostPopularPost2;
+    @FXML
+    private Label postLabel;
+    @FXML
+    private Label postLikeCount;
+    @FXML
+    private Label postAuthor;
+    @FXML
+    private Label postTagList;
+    @FXML
+    private Label postPopularPosts;
+    @FXML
+    private Label postPopularTitle1;
+    @FXML
+    private Label postPopularTitle2;
+    @FXML
+    private Label postPopularTags;
     @FXML
     private Label salary_employee_ID;
     @FXML
@@ -394,14 +421,11 @@ public class dashboardController implements Initializable {
             uri = uri.replace("\\", "\\\\");
         }
 
-        Date date = new Date();
-        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-
         if (!addEmployeeCheckFields()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Message");
             alert.setHeaderText(null);
-            alert.setContentText("Please fill all blank fields");
+            alert.setContentText("Please fill all the blank fields");
             alert.showAndWait();
             return;
         }
@@ -410,6 +434,7 @@ public class dashboardController implements Initializable {
 
         connect = database.connectDb();
         try {
+            // Check if employee exists
             String checkEmployeeSQL = "SELECT COUNT(*) FROM employeedata WHERE employee_id = ?";
             prepare = connect.prepareStatement(checkEmployeeSQL);
             prepare.setString(1, employeeID);
@@ -424,6 +449,18 @@ public class dashboardController implements Initializable {
                 return;
             }
 
+            // Retrieve the current date
+            String currentEmployeeDateSQL = "SELECT date FROM employeedata WHERE employee_id = ?";
+            prepare = connect.prepareStatement(currentEmployeeDateSQL);
+            prepare.setString(1, employeeID);
+            result = prepare.executeQuery();
+
+            java.sql.Date currentSqlDate = null;
+            if (result.next()) {
+                currentSqlDate = result.getDate("date");
+            }
+
+            // Confirm the update
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation Message");
             alert.setHeaderText(null);
@@ -431,6 +468,7 @@ public class dashboardController implements Initializable {
             Optional<ButtonType> option = alert.showAndWait();
 
             if (option.isPresent() && option.get().equals(ButtonType.OK)) {
+                // Update employeedata
                 String sql = "UPDATE employeedata SET firstName = ?, lastName = ?, gender = ?, phoneNum = ?, position = ?, image = ?, date = ? WHERE employee_id = ?";
                 prepare = connect.prepareStatement(sql);
                 prepare.setString(1, addEmployee_firstName.getText());
@@ -439,10 +477,11 @@ public class dashboardController implements Initializable {
                 prepare.setString(4, addEmployee_phoneNum.getText());
                 prepare.setString(5, addEmployee_position.getSelectionModel().getSelectedItem());
                 prepare.setString(6, uri != null ? uri : "");
-                prepare.setDate(7, sqlDate);
+                prepare.setDate(7, currentSqlDate);  // Use the retrieved date
                 prepare.setString(8, employeeID);
                 prepare.executeUpdate();
 
+                // Update employee_info
                 double salary = 0;
                 String checkData = "SELECT * FROM employee_info WHERE employee_id = ?";
                 prepare = connect.prepareStatement(checkData);
@@ -472,6 +511,14 @@ public class dashboardController implements Initializable {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (result != null) result.close();
+                if (prepare != null) prepare.close();
+                if (connect != null) connect.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -660,10 +707,8 @@ public class dashboardController implements Initializable {
                 + "' WHERE employee_id = '" + salary_employee_ID.getText() + "'";
 
         connect = database.connectDb();
-
         try {
             Alert alert;
-
             if (salary_employee_ID.getText().isEmpty()
                     || salary_firstName.getText().isEmpty()
                     || salary_lastName.getText().isEmpty()
@@ -676,16 +721,13 @@ public class dashboardController implements Initializable {
             } else {
                 statement = connect.createStatement();
                 statement.executeUpdate(sql);
-
                 alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Information Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Successfully Updated!");
                 alert.showAndWait();
-
                 salaryShowListData();
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -737,7 +779,6 @@ public class dashboardController implements Initializable {
         salary_col_active.setCellValueFactory(new PropertyValueFactory<>("active"));
 
         salary_tableView.setItems(salaryList);
-
     }
 
     public void salarySelect() {
@@ -814,10 +855,12 @@ public class dashboardController implements Initializable {
             home_form.setVisible(true);
             addEmployee_form.setVisible(false);
             salary_form.setVisible(false);
+            forum_form.setVisible(false);
 
             home_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #f28482, #eb5e28);");
             addEmployee_btn.setStyle("-fx-background-color:transparent");
             salary_btn.setStyle("-fx-background-color:transparent");
+            forum_btn.setStyle("-fx-background-color:transparent");
 
             homeTotalEmployees();
             homeEmployeeTotalPresent();
@@ -828,10 +871,12 @@ public class dashboardController implements Initializable {
             home_form.setVisible(false);
             addEmployee_form.setVisible(true);
             salary_form.setVisible(false);
+            forum_form.setVisible(false);
 
             addEmployee_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #f28482, #eb5e28);");
             home_btn.setStyle("-fx-background-color:transparent");
             salary_btn.setStyle("-fx-background-color:transparent");
+            forum_btn.setStyle("-fx-background-color:transparent");
 
             addEmployeeGenderList();
             addEmployeePositionList();
@@ -841,12 +886,66 @@ public class dashboardController implements Initializable {
             home_form.setVisible(false);
             addEmployee_form.setVisible(false);
             salary_form.setVisible(true);
+            forum_form.setVisible(false);
+
 
             salary_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #f28482, #eb5e28);");
             addEmployee_btn.setStyle("-fx-background-color:transparent");
             home_btn.setStyle("-fx-background-color:transparent");
+            forum_btn.setStyle("-fx-background-color:transparent");
 
             salaryShowListData();
+        } else if (event.getSource() == forum_btn){
+            home_form.setVisible(false);
+            addEmployee_form.setVisible(false);
+            salary_form.setVisible(false);
+            forum_form.setVisible(true);
+
+            loadForum();
+            salary_btn.setStyle("-fx-background-color:transparent");
+            addEmployee_btn.setStyle("-fx-background-color:transparent");
+            home_btn.setStyle("-fx-background-color:transparent");
+            forum_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #f28482, #eb5e28);");
+        }
+    }
+
+    private void loadForum(){
+        String sql = "SELECT title, image, taglist, likes, author FROM post";
+        connect = database.connectDb();
+
+        try {
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            if (result.next()) {
+                String title = result.getString("title");
+                String imageUrl = result.getString("image");
+                String tags = result.getString("taglist");
+                int likes = result.getInt("likes");
+                String author = result.getString("author");
+
+                postLabel.setText(title);
+                if (imageUrl != null && !imageUrl.isEmpty()) {
+                    Image image = new Image(imageUrl);
+                    postImage.setImage(image);
+                } else {
+                    postImage.setImage(null);
+                }
+                postTagList.setText(tags);
+                postLikeCount.setText(String.valueOf(likes));
+                postAuthor.setText(author);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (result != null) result.close();
+                if (prepare != null) prepare.close();
+                if (connect != null) connect.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
