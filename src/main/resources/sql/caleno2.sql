@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-06-2024 a las 17:47:13
+-- Tiempo de generación: 11-06-2024 a las 18:28:50
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `caleno`
+-- Base de datos: `caleno2`
 --
 
 -- --------------------------------------------------------
@@ -63,14 +63,14 @@ CREATE TABLE `employeedata` (
 --
 
 INSERT INTO `employeedata` (`id`, `employee_id`, `firstName`, `lastName`, `gender`, `phoneNum`, `position`, `image`, `date`) VALUES
-(1, 1, 'test1', 'test1', 'Female', '123456789', 'Position 2', 'C:\\Users\\Sergio\\Downloads\\7iWkzuO.png', '2024-05-28'),
-(2, 2, 'sagx', 'Pepe', 'Male', '3464567', 'Position 2', 'C:\\Users\\Sergio\\Desktop\\pfp giatnx\\20240209_131158.jpg', '2024-05-22'),
-(3, 3, 'paco', 'Porras', 'Male', '1234', 'Position 3', 'C:\\\\Users\\\\Sergio\\\\Desktop\\\\pfp giatnx\\\\mark evans.jpg', '2024-05-22'),
-(4, 4, 'juanito', 'Juan', 'Female', '98765', 'Position 1', 'C:\\Users\\Sergio\\Desktop\\pfp giatnx\\pfp.jpg', '2024-05-24'),
-(17, 5, 'piedra', 'verde', 'Female', '12356486', 'Position 3', 'C:\\Users\\Sergio\\Downloads\\7iWkzuO.png', '2024-05-28'),
-(20, 6, 'piedra', 'azul', 'Female', '12356486', 'Position 3', '', '2024-05-31'),
+(1, 1, 'test1', 'test1', 'Female', '123456789', 'Position 2', 'C:\\\\Users\\\\Sergio\\\\Desktop\\\\pfp giatnx\\\\mark evans.jpg', '2024-06-12'),
+(2, 2, 'sagx', 'Pepe', 'Male', '3464567', 'Position 2', 'C:\\Users\\Sergio\\Desktop\\pfp giatnx\\20240209_131158.jpg', '2024-03-22'),
+(3, 3, 'paco', 'Porras', 'Male', '1234', 'Position 3', 'C:\\\\Users\\\\Sergio\\\\Desktop\\\\pfp giatnx\\\\LOZARK.png', '2024-05-22'),
+(4, 4, 'juanito', 'Juan', 'Female', '98765', 'Position 1', 'C:\\\\Users\\\\Sergio\\\\Pictures\\\\Screenshots\\\\Captura de pantalla 2024-06-10 011225.png', '2024-05-26'),
+(17, 5, 'piedra', 'verde', 'Female', '12356486', 'Position 3', 'C:\\\\Users\\\\Sergio\\\\Desktop\\\\pfp giatnx\\\\masao.jpg', '2024-06-12'),
+(20, 6, 'piedra', 'azul', 'Female', '12356486', 'Position 3', 'C:\\\\Users\\\\Sergio\\\\Desktop\\\\pfp giatnx\\\\imagen_2024-01-28_054508112.jpg', '2024-06-10'),
 (21, 7, 'nombre1', 'nombre2', 'Female', '1234567', 'Position 2', 'C:\\\\Users\\\\Sergio\\\\Downloads\\\\Imagen de WhatsApp 2024-05-30 a las 23.56.38_9300963d.jpg', '2024-05-31'),
-(22, 8, 'nuevo', 'empleado', 'Male', '0867', 'Position 3', 'C:\\\\Users\\\\Sergio\\\\Pictures\\\\Screenshots\\\\Captura de pantalla 2024-06-03 035601.png', '2024-06-03');
+(22, 8, 'nuevo', 'empleado', 'Male', '0867', 'Position 3', 'C:\\\\Users\\\\Sergio\\\\Pictures\\\\Screenshots\\\\Captura de pantalla 2024-06-10 011225.png', '2024-06-10');
 
 --
 -- Disparadores `employeedata`
@@ -123,14 +123,37 @@ CREATE TABLE `employee_info` (
 --
 
 INSERT INTO `employee_info` (`id`, `employee_id`, `firstName`, `lastName`, `position`, `salary`, `active`, `date`) VALUES
-(1, 1, 'test1', 'test1', 'Position 2', 300, 1, '2024-05-28'),
-(2, 2, 'sagx', 'Pepe', 'Position 2', 300, 0, '2024-05-22'),
+(1, 1, 'test1', 'test1', 'Position 2', 300, 1, '2024-06-12'),
+(2, 2, 'sagx', 'Pepe', 'Position 2', 300, 0, '2024-03-22'),
 (3, 3, 'paco', 'Porras', 'Position 3', 0, 1, '2024-05-22'),
-(4, 4, 'juanito', 'Juan', 'Position 1', 0, 0, '2024-05-24'),
-(14, 5, 'piedra', 'verde', 'Position 3', 800, 1, '2024-05-28'),
-(17, 6, 'piedra', 'azul', 'Position 3', 0, 0, '2024-05-31'),
+(4, 4, 'juanito', 'Juan', 'Position 1', 0, 0, '2024-05-26'),
+(14, 5, 'piedra', 'verde', 'Position 3', 800, 1, '2024-06-12'),
+(17, 6, 'piedra', 'azul', 'Position 3', 0, 1, '2024-06-10'),
 (18, 7, 'nombre1', 'nombre2', 'Position 2', 0, 0, '2024-05-31'),
-(19, 8, 'nuevo', 'empleado', 'Position 3', 0, 0, '2024-06-03');
+(19, 8, 'nuevo', 'empleado', 'Position 3', 0, 1, '2024-06-10');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `post`
+--
+
+CREATE TABLE `post` (
+  `id` int(11) NOT NULL,
+  `title` mediumtext NOT NULL,
+  `image` mediumtext NOT NULL,
+  `taglist` mediumtext NOT NULL,
+  `body` mediumtext NOT NULL,
+  `likes` int(11) DEFAULT NULL,
+  `author` mediumtext DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `post`
+--
+
+INSERT INTO `post` (`id`, `title`, `image`, `taglist`, `body`, `likes`, `author`) VALUES
+(1, 'test1', 'C:\\Users\\Sergio\\Desktop\\pfp giatnx\\20240209_131158.jpg', 'tag1', 'body1', 30, 'Sergio Colomer');
 
 --
 -- Índices para tablas volcadas
@@ -155,6 +178,12 @@ ALTER TABLE `employee_info`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `post`
+--
+ALTER TABLE `post`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -168,13 +197,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT de la tabla `employeedata`
 --
 ALTER TABLE `employeedata`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `employee_info`
 --
 ALTER TABLE `employee_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT de la tabla `post`
+--
+ALTER TABLE `post`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
