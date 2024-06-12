@@ -8,6 +8,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * MAIN CLASS
+ */
+
 public class Caleno extends Application {
 
 
